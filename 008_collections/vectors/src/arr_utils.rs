@@ -1,5 +1,3 @@
-use std::panic::resume_unwind;
-
 pub fn arr_data_main() {
     let ar = [3, 4, 1, 4, 9, 8];
 
@@ -16,6 +14,8 @@ pub fn arr_data_main() {
 
     let mut v = ar.to_vec();
 
+    v.clear();
+
     let res = get_min_max_vector(&v);
 
     match res {
@@ -29,20 +29,20 @@ fn get_min_max_ar(ar: &[i32; 6]) -> Option<(&i32, &i32)> {
         return None;
     }
 
-    let mut minIndex = 0;
-    let mut maxIndex = 0;
+    let mut min_index = 0;
+    let mut max_index = 0;
 
     for (index, item) in ar.iter().enumerate() {
-        if item < &ar[minIndex] {
-            minIndex = index;
+        if item < &ar[min_index] {
+            min_index = index;
         }
 
-        if item > &ar[maxIndex] {
-            maxIndex = index;
+        if item > &ar[max_index] {
+            max_index = index;
         }
     }
 
-    return Some((&ar[minIndex], &ar[maxIndex]));
+    return Some((&ar[min_index], &ar[max_index]));
 }
 
 fn get_min_max_vector(v: &Vec<i32>) -> Option<(&i32, &i32)> {
@@ -50,21 +50,21 @@ fn get_min_max_vector(v: &Vec<i32>) -> Option<(&i32, &i32)> {
         return None;
     }
 
-    let mut minIndex = 0;
-    let mut maxIndex = 0;
+    let mut min_index = 0;
+    let mut max_index = 0;
 
     for (index, item) in v.iter().enumerate() {
-        if item < &v[minIndex] {
-            minIndex = index;
+        if item < &v[min_index] {
+            min_index = index;
         }
 
-        if item > &v[maxIndex] {
-            maxIndex = index;
+        if item > &v[max_index] {
+            max_index = index;
         }
     }
 
-    let min = &v[minIndex];
-    let max = &v[maxIndex];
+    let min = &v[min_index];
+    let max = &v[max_index];
 
     return Some((min, max));
 }
