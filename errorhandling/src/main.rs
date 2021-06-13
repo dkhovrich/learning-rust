@@ -1,3 +1,5 @@
+mod guess;
+use crate::guess::Guess;
 use std::fs;
 use std::io;
 use std::io::Read;
@@ -16,6 +18,9 @@ fn main() {
     println!("File content: {}", content);
 
     open_file_match();
+
+    let g = Guess::new(99);
+    println!("Guess: {:?}", g.value());
 }
 
 fn open_file_match() {
